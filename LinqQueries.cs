@@ -18,4 +18,8 @@ public class LinqQueries
     {
         return this.librosCollection;
     }
+    public IEnumerable<Book> LibrosDespuesdel2000()
+    {
+        return librosCollection.Where(p=> p.PublishedDate.Year > 2000);
+    }
 }
