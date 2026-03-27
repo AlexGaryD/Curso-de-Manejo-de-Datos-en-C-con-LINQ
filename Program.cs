@@ -6,7 +6,9 @@
 //PrintValues(queries.TodaLaColeccion());
 
 //Libros despues del 2000
-PrintValues(queries.LibrosDespuesdel2000());
+//PrintValues(queries.LibrosDespuesdel2000());
+//Libros con más de 250 páginas y que contienen la palabra "In Action"
+PrintValues(queries.LibrosConMasde250PagConPalabrasInAction());
 
 void PrintValues(IEnumerable<Book> listadelibros)
 {
