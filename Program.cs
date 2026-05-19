@@ -12,8 +12,9 @@
 //Todos los libros tienen un status?
 //Console.WriteLine($" ¿Todos los libros tienen un status? - {queries.TodosLosLibrosTienenStatus()}");
 //Si algún libro fue publicado en 2005
-Console.WriteLine($" ¿Algún libro fue publicado en 2005? - {queries.SiAlgunLibroFuePublicado2005()}");
-
+//Console.WriteLine($" ¿Algún libro fue publicado en 2005? - {queries.SiAlgunLibroFuePublicado2005()}");
+//Libros de Python
+PrintValues(queries.LibrosdePython());
 
 void PrintValues(IEnumerable<Book> listadelibros)
 {
