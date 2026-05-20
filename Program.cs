@@ -15,6 +15,10 @@
 //Console.WriteLine($" ¿Algún libro fue publicado en 2005? - {queries.SiAlgunLibroFuePublicado2005()}");
 //Libros de Python
 PrintValues(queries.LibrosdePython());
+//Libros de Java por nombre ascendente
+//PrintValues(queries.LibrosdeJavaPorNombreAscendente());
+//Libros con más de 450 páginas ordenados por nombre descendente
+PrintValues(queries.Librosdemas450pagDescendente());
 
 void PrintValues(IEnumerable<Book> listadelibros)
 {
