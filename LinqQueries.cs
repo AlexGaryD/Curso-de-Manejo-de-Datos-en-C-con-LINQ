@@ -1,3 +1,5 @@
+using System.Reflection;
+
 public class LinqQueries
 {
     private List<Book> librosCollection = new List<Book>();
@@ -70,4 +72,10 @@ public class LinqQueries
     {
         return librosCollection.Where(p=> p.PageCount > 400).Take(4).Skip(2);
     }
+
+    public IEnumerable<Book> TresPrimerosLibros()
+    {
+        return librosCollection.Take(3).Select(p=>new Book (){ Title = p.Title, PageCount = p.PageCount});
+    }
+    
 }

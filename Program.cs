@@ -22,7 +22,9 @@
 //Tres libros ordenados por fecha
 //PrintValues(queries.TresLibrosOrdenadosPorFecha());
 //Cuatro libros con más de 400 páginas
-PrintValues(queries.CuatroLibrosdemas400pag());
+//PrintValues(queries.CuatroLibrosdemas400pag());
+//Tres primeros libros
+//PrintValues(queries.TresPrimerosLibros());
 
 void PrintValues(IEnumerable<Book> listadelibros)
 {
