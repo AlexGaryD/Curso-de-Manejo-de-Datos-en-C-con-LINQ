@@ -34,7 +34,11 @@
 //Fecha más antigua
 //Console.WriteLine($"Fecha más antigua: {queries.FechaMenorReciente().ToShortDateString()}");
 //Número de páginas mayor
-Console.WriteLine($"Número de páginas mayor: {queries.NumerodePagMayor()}");
+//Console.WriteLine($"Número de páginas mayor: {queries.NumerodePagMayor()}");
+//Libro con menor número de páginas
+//Console.WriteLine($"Libro con menor número de páginas: {queries.LibroconMenorNumeroDePaginas().Title}");
+//Libro con fecha más reciente
+Console.WriteLine($"Libro con fecha más reciente: {queries.LibroconFechaMasReciente().Title}");
 
 void PrintValues(IEnumerable<Book> listadelibros)
 {
