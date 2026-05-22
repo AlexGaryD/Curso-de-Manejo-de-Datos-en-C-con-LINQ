@@ -25,6 +25,10 @@
 //PrintValues(queries.CuatroLibrosdemas400pag());
 //Tres primeros libros
 //PrintValues(queries.TresPrimerosLibros());
+//Cantidad de libros con páginas entre 200 y 500
+//Console.WriteLine($"Cantidad de libros con páginas entre 200 y 500: {queries.CantidadLibros()}");
+//Cantidad de libros con páginas entre 200 y 500 (64 bits)
+Console.WriteLine($"Cantidad de libros con páginas entre 200 y 500 (64 bits): {queries.CantidadLibros64bits()}");
 
 void PrintValues(IEnumerable<Book> listadelibros)
 {
