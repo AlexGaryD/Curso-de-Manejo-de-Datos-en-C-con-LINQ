@@ -28,7 +28,13 @@
 //Cantidad de libros con páginas entre 200 y 500
 //Console.WriteLine($"Cantidad de libros con páginas entre 200 y 500: {queries.CantidadLibros()}");
 //Cantidad de libros con páginas entre 200 y 500 (64 bits)
-Console.WriteLine($"Cantidad de libros con páginas entre 200 y 500 (64 bits): {queries.CantidadLibros64bits()}");
+//Console.WriteLine($"Cantidad de libros con páginas entre 200 y 500 (64 bits): {queries.CantidadLibros64bits()}");
+//Fecha más reciente
+//Console.WriteLine($"Fecha más reciente: {queries.FechaMasReciente().ToShortDateString()}");
+//Fecha más antigua
+//Console.WriteLine($"Fecha más antigua: {queries.FechaMenorReciente().ToShortDateString()}");
+//Número de páginas mayor
+Console.WriteLine($"Número de páginas mayor: {queries.NumerodePagMayor()}");
 
 void PrintValues(IEnumerable<Book> listadelibros)
 {
