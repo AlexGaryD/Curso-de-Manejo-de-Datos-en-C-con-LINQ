@@ -36,9 +36,13 @@
 //Número de páginas mayor
 //Console.WriteLine($"Número de páginas mayor: {queries.NumerodePagMayor()}");
 //Libro con menor número de páginas
-//Console.WriteLine($"Libro con menor número de páginas: {queries.LibroconMenorNumeroDePaginas().Title}");
+//Console.lsWriteLine($"Libro con menor número de páginas: {queries.LibroconMenorNumeroDePaginas().Title}");
 //Libro con fecha más reciente
-Console.WriteLine($"Libro con fecha más reciente: {queries.LibroconFechaMasReciente().Title}");
+//Console.WriteLine($"Libro con fecha más reciente: {queries.LibroconFechaMasReciente().Title}");
+//Suma total de páginas
+//Console.WriteLine($"Suma total de páginas: {queries.SumaTotaldePaginas()}");
+//Títulos de libros publicados después del 2015
+Console.WriteLine($"Títulos de libros publicados después del 2015: {queries.TitulosLibrosDespuesdel2015()}");
 
 void PrintValues(IEnumerable<Book> listadelibros)
 {
