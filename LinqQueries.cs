@@ -135,6 +135,11 @@ public class LinqQueries
             return TitulosLibros;
         });
     }
+    public ILookup<char, Book> DictionaryBookByChar()
+    {
+	    // En el ToLookUp se pone los valores del diccionario que vas a retornar (char, book)
+	    return librosCollection.ToLookup(x => x.Title[0], x => x);
+    }   
 
 
     

@@ -42,7 +42,8 @@
 //Suma total de páginas
 //Console.WriteLine($"Suma total de páginas: {queries.SumaTotaldePaginas()}");
 //Títulos de libros publicados después del 2015
-Console.WriteLine($"Títulos de libros publicados después del 2015: {queries.TitulosLibrosDespuesdel2015()}");
+//Console.WriteLine($"Títulos de libros publicados después del 2015: {queries.TitulosLibrosDespuesdel2015()}");
+//Dictionary of books by first character of their title
 
 void PrintValues(IEnumerable<Book> listadelibros)
 {
