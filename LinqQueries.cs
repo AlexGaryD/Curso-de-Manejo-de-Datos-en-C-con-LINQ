@@ -1,20 +1,9 @@
-using System.Reflection;
-
 public class LinqQueries
 {
     private List<Book> librosCollection = new List<Book>();
     public LinqQueries()
     {
-        using(StreamReader reader = new StreamReader("books.json"))
-        {
-            string json = reader.ReadToEnd();
-            this.librosCollection = System.Text.Json.JsonSerializer.Deserialize<List<Book>>
-             (json, new System.Text.Json.JsonSerializerOptions()
-                 {
-                    PropertyNameCaseInsensitive = true
-                 }
-             );
-        }
+        this.librosCollection = JsonFileLoader.LoadList<Book>("books.json");
     }
     public IEnumerable<Book> TodaLaColeccion()
     {
@@ -22,20 +11,11 @@ public class LinqQueries
     }
     public IEnumerable<Book> LibrosDespuesdel2000()
     {
-       //extesion method
-       // return librosCollection.Where(p=> p.PublishedDate.Year > 2000);
-       return from l in librosCollection
-              where l.PublishedDate.Year > 2000
-              select l;
+        return librosCollection.PublicadosDespuesDe(2000);
     }
     public IEnumerable<Book> LibrosConMasde250PagConPalabrasInAction()
     {
-        //extension method
-        //return librosCollection.Where(p=> p.PageCount > 250 && p.Title.Contains("in Action"));
-        //query expression
-        return from l in librosCollection
-               where l.PageCount > 250 && l.Title.Contains("in Action")
-               select l;
+        return librosCollection.ConMasDePaginas(250).ConTituloQueContiene("in Action");
     }
 
     public bool TodosLosLibrosTienenStatus()
@@ -50,27 +30,27 @@ public class LinqQueries
 
     public IEnumerable<Book> LibrosdePython()
     {
-        return librosCollection.Where(p=> p.Categories.Contains("Python"));
+        return librosCollection.DeCategoria("Python");
     }
 
     public IEnumerable<Book> LibrosdeJavaPorNombreAscendente()
     {
-        return librosCollection.Where(p=> p.Categories.Contains("Java")).OrderBy(p=> p.Title);
+        return librosCollection.DeCategoria("Java").OrderBy(p=> p.Title);
     }
 
     public IEnumerable<Book> Librosdemas450pagDescendente()
     {
-        return librosCollection.Where(p=> p.PageCount > 450).OrderByDescending(p=> p.PageCount);
+        return librosCollection.ConMasDePaginas(450).OrderByDescending(p=> p.PageCount);
     }
 
     public IEnumerable<Book> TresLibrosOrdenadosPorFecha()
     {
-        return librosCollection.Where(p=> p.Categories.Contains("Java")).OrderByDescending(p=> p.PublishedDate).Take(3);
+        return librosCollection.DeCategoria("Java").OrderByDescending(p=> p.PublishedDate).Take(3);
     }
 
     public IEnumerable<Book> CuatroLibrosdemas400pag()
     {
-        return librosCollection.Where(p=> p.PageCount > 400).Take(4).Skip(2);
+        return librosCollection.ConMasDePaginas(400).Take(4).Skip(2);
     }
 
     public IEnumerable<Book> TresPrimerosLibros()
@@ -80,12 +60,12 @@ public class LinqQueries
 
     public int CantidadLibros()
     {
-        return librosCollection.Where(p=> p.PageCount>=200 && p.PageCount<=500).Count();
+        return librosCollection.ConPaginasEntre(200, 500).Count();
     }
 
      public long CantidadLibros64bits()
     {
-        return librosCollection.LongCount(p=> p.PageCount>=200 && p.PageCount<=500);
+        return librosCollection.ConPaginasEntre(200, 500).LongCount();
     }
 
     public DateTime FechaMenorReciente()
@@ -105,7 +85,7 @@ public class LinqQueries
 
     public Book LibroconMenorNumeroDePaginas()
     {
-        return librosCollection.Where(p=> p.PageCount>0).MinBy(p=> p.PageCount);
+        return librosCollection.ConMasDePaginas(0).MinBy(p=> p.PageCount);
     }
 
     public Book LibroconFechaMasReciente()
@@ -115,32 +95,17 @@ public class LinqQueries
 
     public int SumaTotaldePaginas()
     {
-        return librosCollection.Where(p=> p.PageCount >=0 && p.PageCount <= 500).Sum(p=> p.PageCount);
+        return librosCollection.ConPaginasEntre(0, 500).Sum(p=> p.PageCount);
     }
 
     public string TitulosLibrosDespuesdel2015()
     {
-        return librosCollection.Where(p=> p.PublishedDate.Year > 2015)
-        
-        .Aggregate("", (TitulosLibros, next) =>
-        {
-            if (TitulosLibros != string.Empty)
-            {
-                TitulosLibros += ", - " + next.Title;
-            }
-            else
-            {
-                TitulosLibros += next.Title;
-            }
-            return TitulosLibros;
-        });
+        return string.Join(", - ", librosCollection.PublicadosDespuesDe(2015).Select(p => p.Title));
     }
+
     public ILookup<char, Book> DictionaryBookByChar()
     {
 	    // En el ToLookUp se pone los valores del diccionario que vas a retornar (char, book)
 	    return librosCollection.ToLookup(x => x.Title[0], x => x);
-    }   
-
-
-    
+    }
 }
